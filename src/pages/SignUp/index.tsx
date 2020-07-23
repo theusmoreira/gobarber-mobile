@@ -46,7 +46,7 @@ const SignUp: React.FC = () => {
                 console.log('foi');
               }}
             >
-              Entrar
+              Cadastrar
             </Button>
           </Container>
         </ScrollView>
