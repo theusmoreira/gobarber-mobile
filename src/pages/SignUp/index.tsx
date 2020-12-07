@@ -8,7 +8,7 @@ import {
   TextInput,
   Alert,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 import * as Yup from 'yup';
 
@@ -34,6 +34,8 @@ interface SignUpFormData {
   name: string;
   email: string;
   password: string;
+  address: string;
+  whatsapp: string;
 }
 
 const SignUp: React.FC = () => {
@@ -60,7 +62,7 @@ const SignUp: React.FC = () => {
           abortEarly: false,
         });
 
-        await api.post('/users', data);
+        await api.post('/users', { ...data, type: 'user' });
 
         Alert.alert(
           'Cadastro realizado com sucesso!',
@@ -110,6 +112,27 @@ const SignUp: React.FC = () => {
                 placeholder="Nome"
                 returnKeyType="next"
                 onSubmitEditing={() => emailInputRef.current?.focus()}
+              />
+              <Input
+                ref={emailInputRef}
+                autoCorrect={false}
+                autoCapitalize="none"
+                name="address"
+                icon="map-pin"
+                placeholder="Endereço"
+                returnKeyType="next"
+                onSubmitEditing={() => passwordInputRef.current?.focus()}
+              />
+              <Input
+                ref={emailInputRef}
+                keyboardType="phone-pad"
+                autoCorrect={false}
+                autoCapitalize="none"
+                name="whatsapp"
+                icon="phone"
+                placeholder="Whatsapp"
+                returnKeyType="next"
+                onSubmitEditing={() => passwordInputRef.current?.focus()}
               />
               <Input
                 ref={emailInputRef}
