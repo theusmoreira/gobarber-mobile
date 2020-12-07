@@ -14,6 +14,8 @@ import * as Yup from 'yup';
 
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
+
+import InputMask from 'src/components/InputMask';
 import api from '../../services/api';
 
 import getValidationErrors from '../../utils/getValidationErrors';
@@ -44,6 +46,8 @@ const SignUp: React.FC = () => {
 
   const emailInputRef = useRef<TextInput>(null);
   const passwordInputRef = useRef<TextInput>(null);
+  const addressInputRef = useRef<TextInput>(null);
+  const whatsappInputRef = useRef<TextInput>(null);
 
   const handleSignUp = useCallback(
     async (data: SignUpFormData) => {
@@ -115,16 +119,31 @@ const SignUp: React.FC = () => {
               />
               <Input
                 ref={emailInputRef}
+                keyboardType="email-address"
+                autoCorrect={false}
+                autoCapitalize="none"
+                name="email"
+                icon="mail"
+                placeholder="E-mail"
+                returnKeyType="next"
+                onSubmitEditing={() => addressInputRef.current?.focus()}
+              />
+              <Input
+                ref={addressInputRef}
                 autoCorrect={false}
                 autoCapitalize="none"
                 name="address"
                 icon="map-pin"
                 placeholder="Endereço"
                 returnKeyType="next"
-                onSubmitEditing={() => passwordInputRef.current?.focus()}
+                onSubmitEditing={() => whatsappInputRef.current?.focus()}
               />
-              <Input
-                ref={emailInputRef}
+              <InputMask
+                type="cel-phone"
+                options={{
+                  maskType: 'BRL',
+                }}
+                ref={whatsappInputRef}
                 keyboardType="phone-pad"
                 autoCorrect={false}
                 autoCapitalize="none"
@@ -134,17 +153,7 @@ const SignUp: React.FC = () => {
                 returnKeyType="next"
                 onSubmitEditing={() => passwordInputRef.current?.focus()}
               />
-              <Input
-                ref={emailInputRef}
-                keyboardType="email-address"
-                autoCorrect={false}
-                autoCapitalize="none"
-                name="email"
-                icon="mail"
-                placeholder="E-mail"
-                returnKeyType="next"
-                onSubmitEditing={() => passwordInputRef.current?.focus()}
-              />
+
               <Input
                 ref={passwordInputRef}
                 secureTextEntry
