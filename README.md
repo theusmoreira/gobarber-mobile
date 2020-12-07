@@ -10,7 +10,7 @@
 [![GitHub](https://img.shields.io/github/last-commit/matheus-santos-moreira/gobarber-mobile?style=flat-square)](https://img.shields.io/github/last-commit/matheus-santos-moreira/gobarber-mobile?style=flat-square)
 [![GitHub Languages](https://img.shields.io/github/languages/top/matheus-santos-moreira/gobarber-mobile?style=flat-square)](https://img.shields.io/github/languages/top/matheus-santos-moreira/gobarber-mobile?style=flat-square)
 [![GitHub Size](https://img.shields.io/github/repo-size/matheus-santos-moreira/gobarber-mobile?style=flat-square)](https://img.shields.io/github/repo-size/matheus-santos-moreira/gobarber-mobile?style=flat-square)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/matheus-santos-moreira/gobarber-mobile/blob/master/LICENSE)
 
 </div>
 
