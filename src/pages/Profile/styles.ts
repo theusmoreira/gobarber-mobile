@@ -8,9 +8,17 @@ export const Container = styled.View`
   position: relative;
 `;
 
-export const BackButton = styled.TouchableOpacity`
+export const ActionsButton = styled.View`
   margin-top: 40px;
+
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
+
+export const BackButton = styled.TouchableOpacity``;
+
+export const LogoutButton = styled.TouchableOpacity``;
 
 export const Title = styled.Text`
   font-size: 20px;

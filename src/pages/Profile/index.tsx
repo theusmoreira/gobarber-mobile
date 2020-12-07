@@ -23,11 +23,14 @@ import Button from '../../components/Button';
 
 import {
   Container,
+  ActionsButton,
   BackButton,
+  LogoutButton,
   Title,
   UserAvatarButton,
   UserAvatar,
 } from './styles';
+
 import { useAuth } from '../../hooks/auth';
 
 interface ProfileFormData {
@@ -39,7 +42,7 @@ interface ProfileFormData {
 }
 
 const Profile: React.FC = () => {
-  const { user, updateUser } = useAuth();
+  const { user, updateUser, signOut } = useAuth();
 
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
@@ -170,9 +173,14 @@ const Profile: React.FC = () => {
       >
         <ScrollView keyboardShouldPersistTaps="handled">
           <Container>
-            <BackButton onPress={handleGoBack}>
-              <Icon name="chevron-left" size={24} color="#999591" />
-            </BackButton>
+            <ActionsButton>
+              <BackButton onPress={handleGoBack}>
+                <Icon name="chevron-left" size={24} color="#999591" />
+              </BackButton>
+              <LogoutButton onPress={signOut}>
+                <Icon name="log-out" size={24} color="#999591" />
+              </LogoutButton>
+            </ActionsButton>
             <UserAvatarButton onPress={handleUpdateAvatar}>
               <UserAvatar source={{ uri: user.avatar_url }} />
             </UserAvatarButton>
