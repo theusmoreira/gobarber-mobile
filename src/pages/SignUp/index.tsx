@@ -61,16 +61,19 @@ const SignUp: React.FC = () => {
           password: Yup.string().min(6, 'No mínimo 6 dígitos'),
         });
 
+        console.log(data);
         await schema.validate(data, {
           abortEarly: false,
         });
 
-        await api.post('/users', { ...data, type: 'user' });
+        const response = await api.post('/users', { ...data, type: 'user' });
 
-        Alert.alert(
-          'Cadastro realizado com sucesso!',
-          'Você já pode fazer login na aplicação.',
-        );
+        console.log(response.data);
+
+        // Alert.alert(
+        //   'Cadastro realizado com sucesso!',
+        //   'Você já pode fazer login na aplicação.',
+        // );
 
         navigation.goBack();
       } catch (err) {
@@ -138,6 +141,8 @@ const SignUp: React.FC = () => {
                 onSubmitEditing={() => whatsappInputRef.current?.focus()}
               />
               <Input
+                maskType="phone"
+                mask
                 ref={whatsappInputRef}
                 keyboardType="phone-pad"
                 autoCorrect={false}
