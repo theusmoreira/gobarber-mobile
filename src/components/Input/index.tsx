@@ -84,7 +84,9 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         onChangeText={value => {
-          inputValueRef.current.value = value;
+          if (inputValueRef.current) {
+            inputValueRef.current.value = value;
+          }
         }}
         {...rest}
       />

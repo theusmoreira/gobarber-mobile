@@ -15,7 +15,6 @@ import * as Yup from 'yup';
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
 
-import InputMask from 'src/components/InputMask';
 import api from '../../services/api';
 
 import getValidationErrors from '../../utils/getValidationErrors';
@@ -138,11 +137,7 @@ const SignUp: React.FC = () => {
                 returnKeyType="next"
                 onSubmitEditing={() => whatsappInputRef.current?.focus()}
               />
-              <InputMask
-                type="cel-phone"
-                options={{
-                  maskType: 'BRL',
-                }}
+              <Input
                 ref={whatsappInputRef}
                 keyboardType="phone-pad"
                 autoCorrect={false}
