@@ -59,21 +59,22 @@ const SignUp: React.FC = () => {
             .required('E-mail obrigatório')
             .email('Digite um e-mail válido'),
           password: Yup.string().min(6, 'No mínimo 6 dígitos'),
+          address: Yup.string().required('Endereço obrigatório.'),
+          whatsapp: Yup.string().required(
+            'Número de telefone obrigatório. Ex: 55 99 99999-9999',
+          ),
         });
 
-        console.log(data);
         await schema.validate(data, {
           abortEarly: false,
         });
 
-        const response = await api.post('/users', { ...data, type: 'user' });
+        await api.post('/users', { ...data, type: 'user' });
 
-        console.log(response.data);
-
-        // Alert.alert(
-        //   'Cadastro realizado com sucesso!',
-        //   'Você já pode fazer login na aplicação.',
-        // );
+        Alert.alert(
+          'Cadastro realizado com sucesso!',
+          'Você já pode fazer login na aplicação.',
+        );
 
         navigation.goBack();
       } catch (err) {
@@ -141,10 +142,10 @@ const SignUp: React.FC = () => {
                 onSubmitEditing={() => whatsappInputRef.current?.focus()}
               />
               <Input
-                maskType="phone"
                 mask
+                maskType="phone"
                 ref={whatsappInputRef}
-                keyboardType="phone-pad"
+                keyboardType="numeric"
                 autoCorrect={false}
                 autoCapitalize="none"
                 name="whatsapp"
